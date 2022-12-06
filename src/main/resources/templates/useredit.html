@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+ <head th:include="layout :: head"> </head>
+ <body>
+     <div>
+
+ <div th:include="layout :: navigationPanel"></div>
+		<h1>Edytuj użytkownika</h1>
+		<form th:action="@{/useredit}" th:object="${user}" method="POST">
+                     <input type="hidden" th:field="*{userid}"/>
+			<table>
+				<tr>
+					<td>Name</td>
+                                        <td><input type="text" th:field="*{name}" name="name" /> 
+                                        <p style="color:red" th:if="${#fields.hasErrors('name')}" th:text="${#fields.errors('name')}">$</p></td>
+				</tr>
+				<tr>
+					<td>Surname</td>
+					<td><input type="text" th:field="*{surname}" name="surname" /> 
+                                        <p style="color:red" th:if="${#fields.hasErrors('surname')}"th:text="${#fields.errors('surname')}">$</p></td>
+				</tr>
+				<tr>
+					<td>Login</td>
+					<td><input type="text" th:field="*{login}" name="login" />
+                                         <p style="color:red" th:if="${#fields.hasErrors('login')}" th:text="${#fields.errors('login')}">$</p></td>
+				</tr>
+                                <tr>
+					<td>Password</td>
+					<td><input type="password" name="password" />
+                                        <p style="color:red" th:if="${#fields.hasErrors('password')}" th:text="${#fields.errors('password')}">$</p></td>
+                                </tr>				
+			</table>
+			<input type="submit" value="Update" />
+		</form>
+	</div>
+ <div th:include="layout :: footer"></div>
+ </body>
+</html> 
